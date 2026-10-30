@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Matematika Kelas 6: Aritmetika</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0284c7;
+            --accent-color: #f59e0b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 920px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            box-sizing: border-box;
+            min-height: 540px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e2e8f0;
+        }
+
+        .slide-header {
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .slide-header h2 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .slide-header span {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-body {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .slide-body ul, .slide-body ol {
+            padding-left: 24px;
+        }
+
+        .slide-body li {
+            margin-bottom: 10px;
+        }
+
+        .box {
+            background-color: #f0f9ff;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+
+        .box-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+            width: 100%;
+            max-width: 920px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        button:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        .progress-indicator {
+            font-weight: 700;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container" id="slide-container">
+        <!-- Content dynamic injection -->
+    </div>
+
+    <div class="controls">
+        <button id="prev-btn" onclick="prevSlide()">Sebelumnya</button>
+        <span class="progress-indicator" id="progress">Slide 1 / 45</span>
+        <button id="next-btn" onclick="nextSlide()">Berikutnya</button>
+    </div>
+
+    <script>
+        const slides = [
+            // PHASE 1: FOUNDATION (Slides 1-5)
+            { phase: "Fase 1: Fondasi", title: "Modul Utama: Aritmetika Terapan", content: `
+                <div style="text-align: center; padding-top: 40px;">
+                    <h1 style="color: var(--primary-color); font-size: 2.2rem;">Matematika Kelas 6</h1>
+                    <h3 style="color: var(--secondary-color);">Masteri Aritmetika: Operasi Campuran, Skala, Kecepatan, Debit, Uang & Waktu</h3>
+                    <p><em>Kurikulum Merdeka - Fase C</em></p>
+                </div>
+            `},
+            { phase: "Fase 1: Fondasi", title: "Agenda Pembelajaran", content: `
+                <ul>
+                    <li><strong>Aktivitas 1:</strong> Hirarki Operasi Hitung Campuran</li>
+                    <li><strong>Aktivitas 2:</strong> Perbandingan Senilai, Berbalik Nilai, dan Skala Map</li>
+                    <li><strong>Aktivitas 3:</strong> Kinematika Dasar: Kecepatan, Jarak, dan Waktu</li>
+                    <li><strong>Aktivitas 4:</strong> Dinamika Fluida: Debit, Volume, dan Waktu</li>
+                    <li><strong>Aktivitas 5:</strong> Pengelolaan Transaksi Uang & Durasi Waktu</li>
+                </ul>
+            `},
+            { phase: "Fase 1: Fondasi", title: "Tujuan Pembelajaran", content: `
+                <div class="box">
+                    <div class="box-title">Capaian Pembelajaran (Fase C)</div>
+                    Ananda dapat bernalar secara kritis untuk memecahkan masalah aritmetika kontekstual yang melibatkan rasio, laju perubahan (kecepatan & debit), serta pemodelan transaksi finansial dan durasi waktu.
+                </div>
+                <ul>
+                    <li>Menyelesaikan operasi hitung campuran dengan tingkat efisiensi tinggi.</li>
+                    <li>Menganalisis perbandingan serta mengonversi skala peta.</li>
+                    <li>Menghitung waktu temu/papasan dan susul-menyusul pada materi kecepatan.</li>
+                    <li>Menghitung waktu pengisian dan pengosongan wadah pada debit.</li>
+                </ul>
+            `},
+            { phase: "Fase 1: Fondasi", title: "Aplikasi Aritmetika di Dunia Nyata", content: `
+                <ul>
+                    <li><strong>Navigasi & GPS:</strong> Memprediksi Estimasi Waktu Kedatangan (ETA) berdasarkan kecepatan kendaraan.</li>
+                    <li><strong>Arsitektur & Teknik:</strong> Menggunakan skala presisi dalam pembuatan cetak biru bangunan.</li>
+                    <li><strong>Manajemen Air & Industri:</strong> Pengisian tangki otomatis berdasarkan laju debit air.</li>
+                    <li><strong>Finansial & Bisnis:</strong> Perhitungan keuntungan, estimasi anggaran, dan konversi mata uang.</li>
+                </ul>
+            `},
+            { phase: "Fase 1: Fondasi", title: "Peta Konsep Utama Aritmetika", content: `
+                <p>Seluruh materi terikat oleh konsep <strong>Rasio dan Laju Perubahan</strong>:</p>
+                <ul>
+                    <li><strong>Operasi Campuran:</strong> Fondasi kalkulasi presisi.</li>
+                    <li><strong>Skala & Perbandingan:</strong> Rasio antar besaran sejenis.</li>
+                    <li><strong>Kecepatan \\((v = s/t)\\):</strong> Rasio jarak terhadap waktu.</li>
+                    <li><strong>Debit \\((D = V/t)\\):</strong> Rasio volume terhadap waktu.</li>
+                </ul>
+            `},
+
+            // PHASE 2: WARM-UP (Slides 6-10)
+            { phase: "Fase 2: Pemanasan", title: "Tantangan Hitung Cepat: Operasi Dasar ⚡", content: `
+                <div class="box">
+                    <div class="box-title">Latihan Mental Math</div>
+                    Selesaikan perhitungan berikut tanpa bantuan alat tulis dalam waktu singkat:
+                </div>
+                <ul>
+                    <li>\\(45 + 55 \\times 2 = \\dots\\) (Awas urutan!)</li>
+                    <li>\\(120 \\div 4 \\times 5 = \\dots\\)</li>
+                    <li>\\(250 - 75 + 125 = \\dots\\)</li>
+                    <li>\\(15 \\times 4 \\div 6 = \\dots\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 2: Pemanasan", title: "Konversi Satuan Waktu & Jarak", content: `
+                <div class="box">
+                    <div class="box-title">Hubungan Satuan Kunci</div>
+                    <ul>
+                        <li>\\(1\\text{ jam} = 60\\text{ menit} = 3.600\\text{ detik}\\)</li>
+                        <li>\\(1\\text{ km} = 1.000\\text{ m} = 100.000\\text{ cm}\\)</li>
+                        <li>\\(1\\text{ m}^3 = 1.000\\text{ liter} = 1.000\\text{ dm}^3\\)</li>
+                    </ul>
+                </div>
+            `},
+            { phase: "Fase 2: Pemanasan", title: "Cek Prasyarat: Konversi Jam ke Detik", content: `
+                <p>Ubah satuan berikut secara cepat:</p>
+                <ul>
+                    <li>\\(1,5\\text{ jam} = \\dots\\text{ menit} = \\dots\\text{ detik}\\)</li>
+                    <li>\\(2,5\\text{ km} = \\dots\\text{ m} = \\dots\\text{ cm}\\)</li>
+                </ul>
+                <p><strong>Jawaban:</strong></p>
+                <ul>
+                    <li>\\(1,5\\text{ jam} = 90\\text{ menit} = 5.400\\text{ detik}\\)</li>
+                    <li>\\(2,5\\text{ km} = 2.500\\text{ m} = 250.000\\text{ cm}\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 2: Pemanasan", title: "Sifat Efisiensi Berhitung (Trik Mental)", content: `
+                <ul>
+                    <li><strong>Strategi Pengelompokan:</strong> Cari pasangan angka yang menghasilkan puluhan/ratusan.</li>
+                    <li>\\(37 + 88 + 63 = (37 + 63) + 88 = 100 + 88 = 188\\)</li>
+                    <li><strong>Perkalian Pecahan/Pecah Angka:</strong></li>
+                    <li>\\(24 \\times 25 = 6 \\times (4 \\times 25) = 6 \\times 100 = 600\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 2: Pemanasan", title: "Aturan Utama PEMDAS/KABATAKU", content: `
+                <div class="box">
+                    <div class="box-title">Prioritas Eksekusi Operasi</div>
+                    <ol>
+                        <li>Tanda Kurung \\(()\\)</li>
+                        <li>Pangkat & Akar</li>
+                        <li>Perkalian \\(\\times\\) & Pembagian \\(\\div\\) (Setara, kerjakan dari kiri)</li>
+                        <li>Penjumlahan \\(+\\) & Pengurangan \\(-\\) (Setara, kerjakan dari kiri)</li>
+                    </ol>
+                </div>
+            `},
+
+            // PHASE 3: CORE TOPICS (Slides 11-25)
+            { phase: "Fase 3: Konsep Inti", title: "1. Operasi Hitung Campuran", content: `
+                <p>Menyelesaikan gabungan operasi penjumlahan, pengurangan, perkalian, dan pembagian pada pecahan, desimal, dan bilangan bulat.</p>
+                <div class="box">
+                    <div class="box-title">Aturan Penyetaraan Tipe Bilangan</div>
+                    Ubah seluruh bilangan ke dalam satu bentuk yang paling mudah (semua ke pecahan biasa ATAU semua ke desimal) sebelum dieksekusi.
+                </div>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Contoh Operasi Campuran Variatif", content: `
+                <p>Selesaikan: \\(0,75 + \\frac{2}{5} \\times 1,5 - 25\\%\\)</p>
+                <ul>
+                    <li>Ubah ke Desimal:</li>
+                    <li>\\(\\frac{2}{5} = 0,4\\) dan \\(25\\% = 0,25\\)</li>
+                    <li>Eksplisitkan: \\(0,75 + (0,4 \\times 1,5) - 0,25\\)</li>
+                    <li>Perkalian dulu: \\(0,4 \\times 1,5 = 0,6\\)</li>
+                    <li>Hitung: \\(0,75 + 0,6 - 0,25 = 1,35 - 0,25 = 1,1\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "2. Perbandingan Senilai", content: `
+                <p>Jika nilai besaran A bertambah, maka nilai besaran B juga ikut <strong>bertambah</strong> secara proporsional.</p>
+                <div class="box">
+                    <div class="box-title">Formulasi Perbandingan Senilai</div>
+                    \\[\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\implies a_1 \\cdot b_2 = a_2 \\cdot b_1\\]
+                </div>
+                <p><em>Contoh:</em> Jumlah barang dengan total harga pembelian.</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "3. Perbandingan Berbalik Nilai", content: `
+                <p>Jika nilai besaran A bertambah, maka nilai besaran B justru <strong>berkurang</strong> secara proporsional.</p>
+                <div class="box">
+                    <div class="box-title">Formulasi Berbalik Nilai</div>
+                    \\[\\frac{a_1}{a_2} = \\frac{b_2}{b_1} \\implies a_1 \\cdot b_1 = a_2 \\cdot b_2\\]
+                </div>
+                <p><em>Contoh:</em> Kecepatan kendaraan dengan waktu tempuh, atau jumlah pekerja dengan lama waktu penyelesaian.</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "4. Skala dan Peta", content: `
+                <p>Skala adalah perbandingan antara jarak pada gambar/peta \\((J_p)\\) dengan jarak sebenarnya di lapangan \\((J_s)\\).</p>
+                <div class="box">
+                    <div class="box-title">Rumus Segitiga Skala</div>
+                    <ul>
+                        <li>\\(\\text{Skala } (S) = \\frac{J_p}{J_s}\\)</li>
+                        <li>\\(J_p = J_s \\times S\\)</li>
+                        <li>\\(J_s = \\frac{J_p}{S}\\)</li>
+                    </ul>
+                </div>
+                <p><em>Catatan: Pastikan satuan \\(J_p\\) dan \\(J_s\\) disamakan ke cm terlebih dahulu!</em></p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "5. Kecepatan, Jarak, dan Waktu", content: `
+                <p>Kecepatan \\((v)\\) adalah laju perubahan jarak \\((s)\\) terhadap waktu \\((t)\\).</p>
+                <div class="box">
+                    <div class="box-title">Rumus JVK</div>
+                    <ul>
+                        <li>\\(s = v \\times t\\) (Jarak = Kecepatan \\(\\times\\) Waktu)</li>
+                        <li>\\(v = \\frac{s}{t}\\) (Kecepatan = Jarak \\(\\div\\) Waktu)</li>
+                        <li>\\(t = \\frac{s}{v}\\) (Waktu = Jarak \\(\\div\\) Kecepatan)</li>
+                    </ul>
+                </div>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Konversi Satuan Kecepatan", content: `
+                <p>Mengubah \\(\\text{km/jam}\\) ke \\(\\text{m/detik}\\) dan sebaliknya:</p>
+                <ul>
+                    <li>\\(1\\text{ km/jam} = \\frac{1.000\\text{ m}}{3.600\\text{ detik}} = \\frac{5}{18}\\text{ m/s}\\)</li>
+                    <li>Trik Cepat: Kalikan \\(\\frac{5}{18}\\) untuk \\(\\text{km/jam} \\rightarrow \\text{m/s}\\).</li>
+                    <li>Kalikan \\(\\frac{18}{5}\\) untuk \\(\\text{m/s} \\rightarrow \\text{km/jam}\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Kecepatan Khusus: Papasan (Berlawanan Arah)", content: `
+                <p>Dua objek bergerak saling mendekati dari arah berlawanan:</p>
+                <div class="box">
+                    <div class="box-title">Waktu Papasan \\((t_p)\\)</div>
+                    \\[t_p = \\frac{S_{\\text{total}}}{v_1 + v_2}\\]
+                </div>
+                <p>Jika waktu berangkat sama, jumlahkan kecepatannya.</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Kecepatan Khusus: Susul-Menyusul", content: `
+                <p>Dua objek bergerak searah dengan waktu berangkat berbeda:</p>
+                <div class="box">
+                    <div class="box-title">Waktu Menyusul \\((t_m)\\)</div>
+                    \\[t_m = \\frac{\\Delta S}{v_2 - v_1}\\]
+                </div>
+                <p>di mana \\(\\Delta S = v_1 \\times \\Delta t\\) adalah selisih jarak awal, dan \\(v_2 > v_1\\).</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "6. Debit, Volume, dan Waktu", content: `
+                <p>Debit \\((D)\\) adalah banyaknya volume zat cair \\((V)\\) yang mengalir per satuan waktu \\((t)\\).</p>
+                <div class="box">
+                    <div class="box-title">Rumus DVT</div>
+                    <ul>
+                        <li>\\(D = \\frac{V}{t}\\)</li>
+                        <li>\\(V = D \\times t\\)</li>
+                        <li>\\(t = \\frac{V}{D}\\)</li>
+                    </ul>
+                </div>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Kesetaraan Satuan Debit", content: `
+                <ul>
+                    <li>\\(1\\text{ liter} = 1\\text{ dm}^3 = 1.000\\text{ cm}^3 = 1.000\\text{ ml}\\)</li>
+                    <li>\\(1\\text{ liter/detik} = 60\\text{ liter/menit} = 3.600\\text{ liter/jam}\\)</li>
+                    <li>\\(1\\text{ m}^3/\\text{detik} = 1.000\\text{ liter/detik}\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "7. Soal Cerita Transaksi Uang", content: `
+                <p>Pemodelan jual-beli, untung, rugi, dan diskon:</p>
+                <ul>
+                    <li>\\(\\text{Untung} = \\text{Harga Jual} - \text{Harga Beli}\\)</li>
+                    <li>\\(\\text{Persentase Untung} = \\frac{\\text{Untung}}{\\text{Harga Beli}} \\times 100\\%\\)</li>
+                    <li>\\(\\text{Diskon (Potongan)} = \\%\\text{Diskon} \\times \\text{Harga Awal}\\)</li>
+                    <li>\\(\\text{Harga Akhir} = \\text{Harga Awal} - \\text{Diskon}\\)</li>
+                </ul>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "8. Soal Cerita Durasi Waktu & Jadwal", content: `
+                <p>Menghitung durasi aktivitas, waktu mulai, dan waktu selesai:</p>
+                <div class="box">
+                    <div class="box-title">Prinsip Jam & Menit</div>
+                    \\[\\text{Waktu Selesai} = \\text{Waktu Mulai} + \\text{Durasi} + \\text{Istirahat}\\]
+                </div>
+                <p><em>Perhatian:</em> Lakukan operasi penambahan/pengurangan terpisah antara satuan jam dan menit!</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Sintesis Masalah Aritmetika Terpadu", content: `
+                <p>Di kehidupan nyata, masalah sering memadukan lebih dari satu konsep!</p>
+                <p><em>Contoh Kombinasi:</em> Menghitung biaya bahan bakar (Uang) berdasarkan jarak perjalanan (Kecepatan & Waktu) yang diukur dari peta (Skala).</p>
+            `},
+            { phase: "Fase 3: Konsep Inti", title: "Rangkuman Strategi Penyelesaian", content: `
+                <ol>
+                    <li>Identifikasi besaran yang diketahui dan ditanyakan.</li>
+                    <li>Samakan semua satuan ke sistem yang sejenis.</li>
+                    <li>Tentukan rumus/model matematika yang sesuai.</li>
+                    <li>Eksekusi kalkulasi secara sistematis.</li>
+                    <li>Cek kembali kelogisan jawaban akhir.</li>
+                </ol>
+            `},
+
+            // PHASE 4: GUIDED LEARNING (Slides 26-36)
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 1: Operasi Campuran", content: `
+                <div class="box">
+                    <div class="box-title">Soal 1</div>
+                    Hitung nilai dari: \\(2,5 \\div \\frac{1}{2} + 3 \\times \\left(1,2 - \\frac{1}{5}\\right)\\)
+                </div>
+                <p><strong>Langkah Penyelesaian:</strong></p>
+                <ol>
+                    <li>Selesaikan dalam kurung: \\(1,2 - 0,2 = 1,0\\)</li>
+                    <li>Pembagian awal: \\(2,5 \\div 0,5 = 5\\)</li>
+                    <li>Perkalian: \\(3 \\times 1,0 = 3\\)</li>
+                    <li>Jumlahkan: \\(5 + 3 = 8\\)</li>
+                </ol>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 2: Perbandingan Berbalik Nilai", content: `
+                <div class="box">
+                    <div class="box-title">Soal 2</div>
+                    Sebuah proyek dapat diselesaikan oleh 12 pekerja dalam waktu 20 hari. Jika proyek ingin diselesaikan dalam waktu 15 hari, berapa banyak tambahan pekerja yang dibutuhkan?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>Gunakan perkalian konstan: \\(a_1 \\cdot b_1 = a_2 \\cdot b_2\\)</li>
+                    <li>\\(12 \\times 20 = P_2 \\times 15 \\implies 240 = 15 P_2 \\implies P_2 = 16\\text{ pekerja}\\)</li>
+                    <li>Tambahan pekerja = \\(16 - 12 = 4\\text{ pekerja}\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 3: Perhitungan Skala", content: `
+                <div class="box">
+                    <div class="box-title">Soal 3</div>
+                    Jarak kota A dan B pada peta berskala \\(1 : 1.500.000\\) adalah \\(4\\text{ cm}\\). Berapa jarak sebenarnya?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>\\(J_s = \\frac{J_p}{S} = 4\\text{ cm} \\times 1.500.000 = 6.000.000\\text{ cm}\\)</li>
+                    <li>Konversi ke km: \\(6.000.000 \\div 100.000 = 60\\text{ km}\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 4: Waktu Papasan", content: `
+                <div class="box">
+                    <div class="box-title">Soal 4</div>
+                    Kota A dan B berjarak \\(180\\text{ km}\\). Andi berangkat dari A ke B pukul 08.00 dengan kecepatan \\(50\\text{ km/jam}\\). Budi berangkat dari B ke A pukul 08.00 dengan kecepatan \\(40\\text{ km/jam}\\). Pukul berapa mereka berpapasan?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>\\(t_p = \\frac{S}{v_1 + v_2} = \\frac{180}{50 + 40} = \\frac{180}{90} = 2\\text{ jam}\\)</li>
+                    <li>Waktu papasan = \\(08.00 + 2\\text{ jam} = 10.00\\) WIB.</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 5: Waktu Menyusul", content: `
+                <div class="box">
+                    <div class="box-title">Soal 5</div>
+                    Candra naik motor kecepatan \\(40\\text{ km/jam}\\) pukul 07.00. Doni menyusul naik mobil kecepatan \\(60\\text{ km/jam}\\) pukul 07.30. Pukul berapa Doni menyusul Candra?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>Beda waktu = \\(30\\text{ menit} = 0,5\\text{ jam}\\).</li>
+                    <li>Selisih jarak (\\(\\Delta S\\)) = \\(40 \\times 0,5 = 20\\text{ km}\\).</li>
+                    <li>\\(t_m = \\frac{\\Delta S}{v_2 - v_1} = \\frac{20}{60 - 40} = \\frac{20}{20} = 1\\text{ jam}\\) setelah Doni berangkat.</li>
+                    <li>Pukul menyusul = \\(07.30 + 1\\text{ jam} = 08.30\\) WIB.</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 6: Pengisian Kolam (Debit)", content: `
+                <div class="box">
+                    <div class="box-title">Soal 6</div>
+                    Sebuah kolam renang bervolume \\(36\\text{ m}^3\\) diisi air menggunakan selang berdebit \\(20\\text{ liter/detik}\\). Berapa menit waktu yang dibutuhkan hingga penuh?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>Ubah volume: \\(36\\text{ m}^3 = 36.000\\text{ liter}\\).</li>
+                    <li>\\(t = \\frac{V}{D} = \\frac{36.000}{20} = 1.800\\text{ detik}\\).</li>
+                    <li>Ubah ke menit: \\(1.800 \\div 60 = 30\\text{ menit}\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 7: Transaksi Uang Kombinasi", content: `
+                <div class="box">
+                    <div class="box-title">Soal 7</div>
+                    Eka membeli 3 kemeja @ Rp100.000. Toko memberikan diskon \\(20\\%\\) untuk total belanja. Jika Eka membayar dengan 3 lembar uang Rp100.000, berapa kembaliannya?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>Total awal = \\(3 \\times 100.000 = \\text{Rp}300.000\\).</li>
+                    <li>Diskon = \\(20\\% \\times 300.000 = \\text{Rp}60.000\\).</li>
+                    <li>Total bayar = \\(300.000 - 60.000 = \\text{Rp}240.000\\).</li>
+                    <li>Kembalian = \\(300.000 - 240.000 = \\text{Rp}60.000\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Latihan Terbimbing 8: Analisis Waktu Perjalanan", content: `
+                <div class="box">
+                    <div class="box-title">Soal 8</div>
+                    Feri menempuh jarak \\(150\\text{ km}\\) dengan kecepatan rata-rata \\(60\\text{ km/jam}\\). Di tengah jalan ia istirahat 30 menit. Jika tiba pukul 11.45, pukul berapa Feri berangkat?
+                </div>
+                <p><strong>Penyelesaian:</strong></p>
+                <ul>
+                    <li>Waktu jalan = \\(\\frac{150}{60} = 2,5\\text{ jam} = 2\\text{ jam } 30\\text{ menit}\\).</li>
+                    <li>Total durasi = \\(2\\text{ jam } 30\\text{ menit} + 30\\text{ menit} = 3\\text{ jam}\\).</li>
+                    <li>Jam berangkat = \\(11.45 - 3\\text{ jam} = 08.45\\) WIB.</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Trik Hitung Cepat Soal Cerita", content: `
+                <div class="box">
+                    <div class="box-title">Tips Efisiensi</div>
+                    <ul>
+                        <li>Sederhanakan angka nol pada perbandingan sebelum mengalikan.</li>
+                        <li>Gunakan pecahan biasa sederhana daripada desimal panjang untuk perkalian.</li>
+                        <li>Gunakan perkalian silang langsung pada bentuk perbandingan senilai.</li>
+                    </ul>
+                </div>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Analisis Kesalahan Umum", content: `
+                <ul>
+                    <li>Lupa mengubah satuan jarak (km) ke cm saat menghitung skala.</li>
+                    <li>Lupa memperhitungkan selisih waktu berangkat pada soal menyusul.</li>
+                    <li>Mencampuradukkan perbandingan senilai dan berbalik nilai.</li>
+                </ul>
+            `},
+            { phase: "Fase 4: Terbimbing", title: "Kuis Pemandu Cepat", content: `
+                <p>Debit pipa A adalah \\(5\\text{ liter/menit}\\). Berapa volume air yang dialirkan dalam \\(1,5\\text{ jam}\\)?</p>
+                <p><strong>Jawaban:</strong> \\(t = 90\\text{ menit} \\implies V = 5 \\times 90 = 450\\text{ liter}\\).</p>
+            `},
+
+            // PHASE 5: INDEPENDENT PRACTICE (Slides 37-42)
+            { phase: "Fase 5: Mandiri", title: "Tantangan Mandiri 1: Operasi Campuran", content: `
+                <div class="box">
+                    <div class="box-title">Soal Mandiri 1</div>
+                    Hitunglah hasil dari: \\[3,6 \\div 0,4 + 2 \\frac{1}{2} \\times 4 - 7,5\\]
+                </div>
+                <p>Kerjakan secara mandiri di buku catatanmu!</p>
+            `},
+            { phase: "Fase 5: Mandiri", title: "Tantangan Mandiri 2: Perbandingan & Pekerja", content: `
+                <div class="box">
+                    <div class="box-title">Soal Mandiri 2</div>
+                    Persediaan makanan cukup untuk 20 ekor sapi selama 15 hari. Jika dibeli lagi 5 ekor sapi, berapa hari persediaan makanan tersebut akan habis?
+                </div>
+            `},
+            { phase: "Fase 5: Mandiri", title: "Tantangan Mandiri 3: Papasan Beda Waktu", content: `
+                <div class="box">
+                    <div class="box-title">Soal Mandiri 3</div>
+                    Jarak kota X dan Y adalah \\(210\\text{ km}\\). Mobil A berangkat dari X pukul 08.00 dengan kecepatan \\(60\\text{ km/jam}\\). Mobil B berangkat dari Y pukul 08.30 dengan kecepatan \\(40\\text{ km/jam}\\). Pukul berapa mereka berpapasan?
+                </div>
+            `},
+            { phase: "Fase 5: Mandiri", title: "Tantangan Mandiri 4: Debit & Kebocoran Tangki", content: `
+                <div class="box">
+                    <div class="box-title">Soal Mandiri 4</div>
+                    Sebuah tangki berisi \\(1.200\\text{ liter}\\) air. Keran bawah mengalirkan air dengan debit \\(15\\text{ liter/menit}\\). Berapa sisa volume air dalam tangki setelah dialirkan selama 45 menit?
+                </div>
+            `},
+            { phase: "Fase 5: Mandiri", title: "Pembahasan & Kunci Tantangan Mandiri", content: `
+                <ul>
+                    <li><strong>Mandiri 1:</strong> \\(9 + 10 - 7,5 = 11,5\\)</li>
+                    <li><strong>Mandiri 2:</strong> \\(20 \\times 15 = 25 \\times t_2 \\implies 300 = 25 t_2 \\implies t_2 = 12\\text{ hari}\\)</li>
+                    <li><strong>Mandiri 3:</strong> SISA jarak pada 08.30 = \\(210 - 30 = 180\\text{ km}\\). \\(t_p = 180 / 100 = 1,8\\text{ jam} = 1\\text{ jam } 48\\text{ menit}\\). Berpapasan pukul 10.18 WIB.</li>
+                    <li><strong>Mandiri 4:</strong> Air keluar = \\(15 \\times 45 = 675\\text{ liter}\\). Sisa = \\(1.200 - 675 = 525\\text{ liter}\\).</li>
+                </ul>
+            `},
+            { phase: "Fase 5: Mandiri", title: "Refleksi Tingkat Akurasi Hitungan", content: `
+                <ul>
+                    <li>Apakah kamu berhasil menjawab seluruh soal mandiri dengan benar?</li>
+                    <li>Mana topik yang paling menantang: Kecepatan, Debit, atau Perbandingan?</li>
+                </ul>
+            `},
+
+            // PHASE 6: CLOSING (Slides 43-45)
+            { phase: "Fase 6: Penutup", title: "Rangkuman Kunci Aritmetika Kelas 6", content: `
+                <ul>
+                    <li>Prioritas kalkulasi campuran wajib mematuhi aturan KABATAKU.</li>
+                    <li>Konsep Rasio mendasari Skala, Kecepatan \\((s/t)\\), dan Debit \\((V/t)\\).</li>
+                    <li>Ketelitian mengonversi satuan (jam/menit, km/m, liter/m³) adalah kunci keberhasilan.</li>
+                </ul>
+            `},
+            { phase: "Fase 6: Penutup", title: "Exit Ticket (Tiket Keluar)", content: `
+                <div class="box">
+                    <div class="box-title">Uji Pemahaman Kilat 🎟️</div>
+                    <ol>
+                        <li>Kecepatan \\(72\\text{ km/jam}\\) setara dengan berapa \\(\\text{m/detik}\\)?</li>
+                        <li>Sebuah peta memiliki skala \\(1 : 200.000\\). Jika jarak pada peta \\(5\\text{ cm}\\), berapa km jarak sebenarnya?</li>
+                    </ol>
+                </div>
+            `},
+            { phase: "Fase 6: Penutup", title: "Selamat! Pembelajaran Selesai 👏", content: `
+                <div style="text-align: center; padding-top: 40px;">
+                    <h2>Hebat! Ananda Telah Menguasai Aritmetika Terapan!</h2>
+                    <p>Terus berlatih berpikir kritis dan hitung cepat setiap hari!</p>
+                </div>
+            `}
+        ];
+
+        let currentSlide = 0;
+
+        function renderSlide() {
+            const slide = slides[currentSlide];
+            const container = document.getElementById('slide-container');
+            container.innerHTML = `
+                <div>
+                    <div class="slide-header">
+                        <span>${slide.phase}</span>
+                        <h2>${slide.title}</h2>
+                    </div>
+                    <div class="slide-body">
+                        ${slide.content}
+                    </div>
+                </div>
+            `;
+            document.getElementById('progress').innerText = `Slide ${currentSlide + 1} / ${slides.length}`;
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('next-btn').disabled = currentSlide === slides.length - 1;
+
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                renderSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                renderSlide();
+            }
+        }
+
+        renderSlide();
+    </script>
+</body>
+</html>
